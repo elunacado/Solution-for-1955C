@@ -14,6 +14,41 @@ Leaving the following array as our output
 
 With that said and done lets start deconstructing the code
 ## Implementation
+ This imports the threadPoolExecutor class thet is used to create a pool of workers.
+```python
+  from concurrent.futures import ThreadPoolExecutor
+```
+This removes the zeroes from the array
+```python
+  def removeZeroes(ships):
+    while 0 in ships:
+        ships.remove(0)
+```
+This function assigns the head and the tail of the array, beside it keeps record from the number of attacks and attack count that'll help us decide if we're attacking the head o f the caravan or the tail of it.
+```python
+def recursive_attack(numberOfAttacks, ships, attack_count=0):
+    if numberOfAttacks == 0 or not ships:
+        if ships:
+            head = ships[0]
+            tail = ships[-1]
+        else:
+            head = tail = None
+        return head, tail
+```
+The attack count as previously established will tell us where to attack by doing the modular operation and seeing if there is a residue\
+```python
+ if attack_count % 2 == 0:  # Atacking the head
+        ships[0] -= 1
+        if ships[0] <= 0:
+            ships[0] = 0
+            removeZeroes(ships)
+    else:  # Atacking the tail
+        ships[-1] -= 1
+        if ships[-1] <= 0:
+            ships[-1] = 0
+            removeZeroes(ships)
+```
+Finally every time we call this recursive functio we'll use a new thread (in this case called executor) which my max is 10
 
 ## Time Complexity
 
