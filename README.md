@@ -12,7 +12,7 @@ Number of attacks of the kraken: 5
 Leaving the following array as our output
 [3,4,5,3]
 
-With that said and done lets start deconstructig the code
+With that said and done lets start deconstructing the code
 ## Implementation
 
 ## Time Complexity

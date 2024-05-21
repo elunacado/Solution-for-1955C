@@ -13,12 +13,12 @@ def recursive_attack(numberOfAttacks, ships, attack_count=0):
             head = tail = None
         return head, tail
 
-    if attack_count % 2 == 0:  # Ataque a la cabeza
+    if attack_count % 2 == 0:  # Atacking the head
         ships[0] -= 1
         if ships[0] <= 0:
             ships[0] = 0
             removeZeroes(ships)
-    else:  # Ataque a la cola
+    else:  # Atacking the tail
         ships[-1] -= 1
         if ships[-1] <= 0:
             ships[-1] = 0
