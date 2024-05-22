@@ -4,6 +4,7 @@ max_attacks = 10**15
 
 def recursive_attack(numberOfAttacks, ships, attack_count=0):
     ships = [ship for ship in ships if ship > 0] # Remove ships with 0 health
+    
     if numberOfAttacks == 0 or not ships:
         return (ships[0], ships[-1]) if ships else (None, None)
 
