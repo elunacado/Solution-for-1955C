@@ -14,6 +14,10 @@ Leaving the following array as our output
 
 With that said and done lets start deconstructing the code
 ## Implementation
+First of all I asigned a variable called max_attacks since the problem stablishes that the number of attacks is never going to be greater than 10^15
+```python
+  max_attacks = 10**15
+```
  This imports the threadPoolExecutor class thet is used to create a pool of workers.
 ```python
   from concurrent.futures import ThreadPoolExecutor
@@ -35,7 +39,7 @@ def recursive_attack(numberOfAttacks, ships, attack_count=0):
             head = tail = None
         return head, tail
 ```
-The attack count as previously established will tell us where to attack by doing the modular operation and seeing if there is a residue\
+The attack count as previously established will tell us where to attack by doing the modular operation and seeing if there is a residue and will eliminate the sunken ships (those that reach zero) from the array
 ```python
  if attack_count % 2 == 0:  # Atacking the head
         ships[0] -= 1
@@ -48,7 +52,13 @@ The attack count as previously established will tell us where to attack by doing
             ships[-1] = 0
             removeZeroes(ships)
 ```
-Finally every time we call this recursive functio we'll use a new thread (in this case called executor) which my max is 10
+Finally we're creatig the thread pool which is as big as the max number of attacks and ordering to execute itself over and over until the number of attacks reaches zero every time it calls itself it'll be done with a different thread (in this code called worker)
+
+```python
+    with ThreadPoolExecutor(max_workers=max_attacks) as executor:
+        future = executor.submit(recursive_attack, numberOfAttacks - 1, ships, attack_count + 1)
+        return future.result()
+```
 
 ## Time Complexity
 
