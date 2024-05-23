@@ -9,18 +9,25 @@ def attack(numberOfAttacks, ships):
     ships = deque(ships)
     sunken_ships = 0
     attack_count = 0
-
+    
+    ships = deque(ship for ship in ships if ship > 0)
+    sunken_ships += len(ships) - len(ships)
+    
     while numberOfAttacks > 0 and ships:
-        if attack_count % 2 == 0:  # Attack the head
-            ships[0] -= 1
-            if ships[0] <= 0:
-                ships.popleft()
+        if attack_count & 1 == 0:  # Attack the head
+            ship = ships.popleft()
+            ship -= 1
+            if ship <= 0:
                 sunken_ships += 1
+            else:
+                ships.appendleft(ship)
         else:  # Attack the tail
-            ships[-1] -= 1
-            if ships[-1] <= 0:
-                ships.pop()
+            ship = ships.pop()
+            ship -= 1
+            if ship <= 0:
                 sunken_ships += 1
+            else:
+                ships.append(ship)
 
         numberOfAttacks -= 1
         attack_count += 1
