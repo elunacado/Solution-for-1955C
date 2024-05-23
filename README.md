@@ -84,3 +84,8 @@ for _ in range(t):
     result = recursive_attack(k, ships)
     print(result)
 ```
+## The time complexity
+The time complexity of this code is one of O(n * k) n being the number of ships in the caravan and k the number of attacks the kraken si going to realize
+
+## The fastest solution 
+This isn't the fastest solution for the problem however it is the fastest solution that includes multi threading
