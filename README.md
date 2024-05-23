@@ -127,9 +127,33 @@ for _ in range(t):
     result = attack(k, ships)
     print(result)
 ```
-
-However this isn't fast enough for thr problem requirements, so we've gotta change it 
-
+## Testing
+Since the testing velocities may vary according to the device codeforces lend us to check our results I've created a file replicating the test cases codeforces will throw at us in the input.txt file and the results will be presented in the output.txt file
+```txt
+11
+4 5
+1 2 4 3
+4 6
+1 2 4 3
+5 20
+2 7 1 8 2
+2 2
+3 2
+2 15
+1 5
+2 7
+5 2
+10 9999999999
+1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
+2 2147483648
+1000000000 1000000000
+2 1000000000
+1000000000 1000000000
+1 10000000000000
+1
+2 10
+2 2
+```
 ### Bibliography:
 [1] https://www.geeksforgeeks.org/multithreading-python-set-1/ <br />
 [2] https://www.geeksforgeeks.org/thread-pool-in-cpp/
