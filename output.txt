@@ -1,0 +1,2 @@
+Number of sunken ships: 2
+Number of sunken ships: 3
