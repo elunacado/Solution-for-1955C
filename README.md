@@ -18,6 +18,8 @@ Leaving the following amount of fallen ships equal to 2 <br />
 ![altimg](https://media.geeksforgeeks.org/wp-content/uploads/Thread_Pool.jpg) <br />
 For this code I'm asked for academic purposes to implement multi threading in it which as described in geeks for geeks is a way our code to do multitasking by commanding different threads which are the smallest unit of proccessing that can be performed by an OS, however there is always the problem of overheading (taking more resources and time that the problem requires) so to solve that i'm using the architecture of thread pools that enhance overall performance by lowering the overhead of thread generation and destruction through thread reuse.
 
+The way my code works is that everytime the function calls itself a new thread from the thread pool will jump in to solve the problem and set the other will be set on wait this process will be repeated over and over until the base case is reached and all occupied threads are released<br />
+
 ## Implementation
 With that said and done lets start deconstructing the code
 ```python
