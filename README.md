@@ -15,7 +15,7 @@ Leaving the following amount of fallen ships equal to 2 <br />
 
 
 ## Modal
-![altimg](https://media.geeksforgeeks.org/wp-content/uploads/Thread_Pool.jpg)
+![altimg](https://media.geeksforgeeks.org/wp-content/uploads/Thread_Pool.jpg) <br />
 For this code I'm asked for academic purposes to implement multi threading in it which as described in geeks for geeks is a way our code to do multitasking by commanding different threads which are the smallest unit of proccessing that can be performed by an OS, however there is always the problem of overheading (taking more resources and time that the problem requires) so to solve that i'm using the architecture of thread pools that enhance overall performance by lowering the overhead of thread generation and destruction through thread reuse.
 
 ## Implementation
