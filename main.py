@@ -1,7 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
 
-t = int(input())
-
 def recursive_attack(numberOfAttacks, ships, attack_count=0, sunken_ships=0):
     if numberOfAttacks == 0 or not ships:
         return sunken_ships
@@ -18,10 +16,20 @@ def recursive_attack(numberOfAttacks, ships, attack_count=0, sunken_ships=0):
         future = executor.submit(recursive_attack, numberOfAttacks - 1, ships, attack_count + 1, sunken_ships)
         return future.result()
 
-for _ in range(t):
-    n, k = map(int, input().split())
-    ships = list(map(int, input().split()))
-    result = recursive_attack(k, ships)
-    print(result)
+# Read values from a file
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
 
+# Initialize an empty list to store the results
+results = []
 
+# Loop over the lines in the file
+for i in range(1, len(lines), 2):
+    numberOfShips, numberOfAttacks = map(int, lines[i].split())
+    ships = list(map(int, lines[i+1].split()))  # The health of each ship is one line below the number of attacks
+    results.append(recursive_attack(numberOfAttacks, ships))
+
+# Write the results to a file
+with open('output.txt', 'w') as f:
+    for result in results:
+        f.write(f"Number of sunken ships: {result}\n")
