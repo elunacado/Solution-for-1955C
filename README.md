@@ -130,7 +130,9 @@ for _ in range(t):
 ## Testing
 Since the testing velocities may vary according to the device codeforces lend us to check our results I've created a file replicating the test cases codeforces will throw at us in the input.txt file and the results will be presented in the output.txt file
 ```txt
-11
+8
+5 15
+1 3 4 6
 4 5
 1 2 4 3
 4 6
@@ -143,14 +145,6 @@ Since the testing velocities may vary according to the device codeforces lend us
 1 5
 2 7
 5 2
-10 9999999999
-1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
-2 2147483648
-1000000000 1000000000
-2 1000000000
-1000000000 1000000000
-1 10000000000000
-1
 2 10
 2 2
 ```
