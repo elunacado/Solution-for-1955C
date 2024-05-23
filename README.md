@@ -25,12 +25,7 @@ With that said and done lets start deconstructing the code
 ```python
 from concurrent.futures import ThreadPoolExecutor
 
-t = int(input())
-
 def recursive_attack(numberOfAttacks, ships, attack_count=0, sunken_ships=0):
-    sunken_ships += len([ship for ship in ships if ship <= 0])  # Count sunken ships
-    ships = [ship for ship in ships if ship > 0]  # Remove sunken ships
-
     if numberOfAttacks == 0 or not ships:
         return sunken_ships
 
@@ -39,17 +34,30 @@ def recursive_attack(numberOfAttacks, ships, attack_count=0, sunken_ships=0):
     else:  # Attack the tail
         ships[-1] -= 1
 
+    sunken_ships += len([ship for ship in ships if ship <= 0])  # Count sunken ships
+    ships = [ship for ship in ships if ship > 0]  # Remove sunken ships
+
     with ThreadPoolExecutor(max_workers=20) as executor:
         future = executor.submit(recursive_attack, numberOfAttacks - 1, ships, attack_count + 1, sunken_ships)
         return future.result()
 
-# Iterate through each test case
-for _ in range(t):
-    # Read input for each test case
-    n, k = map(int, input().split())
-    ships = list(map(int, input().split()))
-    result = recursive_attack(k, ships)
-    print(result)
+# Read values from a file
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+# Initialize an empty list to store the results
+results = []
+
+# Loop over the lines in the file
+for i in range(1, len(lines), 2):
+    numberOfShips, numberOfAttacks = map(int, lines[i].split())
+    ships = list(map(int, lines[i+1].split()))  # The health of each ship is one line below the number of attacks
+    results.append(recursive_attack(numberOfAttacks, ships))
+
+# Write the results to a file
+with open('output.txt', 'w') as f:
+    for result in results:
+        f.write(f"Number of sunken ships: {result}\n")
 ```
 
 At last we needed to make this code compatible with the codeforces so we added the following steps <br />
@@ -78,15 +86,31 @@ After this we stablish the limit that when the number of attacks reaches 0 we're
     else:  # Attack the tail
         ships[-1] -= 1
 ```
-Using the Thread Pool in with 20 threads (in this code called workers) we submit to the executor the call of the recursive function subtracting 1 to the variable of number of attacks and adding 1 to the attack count asigning a new thread to each time we call the recursive function and we return the result 
-
-We read the number of ships, number of attacks of the kraken and finally the health of each ship printing the result of the amount of sunken ships
+Using the Thread Pool in with 20 threads (in this code called workers) we submit to the executor the call of the recursive function subtracting 1 to the variable of number of attacks and adding 1 to the attack count asigning a new thread to each time we call the recursive function and we return the result
 ```python
-for _ in range(t):
-    n, k = map(int, input().split())
-    ships = list(map(int, input().split()))
-    result = recursive_attack(k, ships)
-    print(result)
+   with ThreadPoolExecutor(max_workers=20) as executor:
+        future = executor.submit(recursive_attack, numberOfAttacks - 1, ships, attack_count + 1, sunken_ships)
+        return future.result()
+```
+
+We read the number of ships, number of attacks of the kraken and finally the health of each ship printing the result of the amount of sunken ships in the output.txt file
+```python
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+# Initialize an empty list to store the results
+results = []
+
+# Loop over the lines in the file
+for i in range(1, len(lines), 2):
+    numberOfShips, numberOfAttacks = map(int, lines[i].split())
+    ships = list(map(int, lines[i+1].split()))  # The health of each ship is one line below the number of attacks
+    results.append(recursive_attack(numberOfAttacks, ships))
+
+# Write the results to a file
+with open('output.txt', 'w') as f:
+    for result in results:
+        f.write(f"Number of sunken ships: {result}\n")
 ```
 ## The time complexity
 The time complexity of this code is one of O(n * k) n being the number of ships in the caravan and k the number of attacks the kraken si going to realize
