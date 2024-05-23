@@ -130,6 +130,6 @@ for _ in range(t):
 
 However this isn't fast enough for thr problem requirements, so we've gotta change it 
 
-Bibliography:
-[1] https://www.geeksforgeeks.org/multithreading-python-set-1/
+### Bibliography:
+[1] https://www.geeksforgeeks.org/multithreading-python-set-1/ <br />
 [2] https://www.geeksforgeeks.org/thread-pool-in-cpp/
