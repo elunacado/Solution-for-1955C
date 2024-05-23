@@ -128,11 +128,21 @@ for _ in range(t):
     print(result)
 ```
 ## Testing
-Since the testing velocities may vary according to the device codeforces lend us to check our results I've created a file replicating the test cases codeforces will throw at us in the input.txt file and the results will be presented in the output.txt file
+Since the testing velocities may vary according to the device codeforces lend us to check our results I've created a file replicating the test cases codeforces will throw at us in the input.txt file and the results will be presented in the output.txt file <br />
+
+Number of test cases
 ```txt
 8
+```
+Number of ships and number of attacks of the kraken
+```txt
 5 15
+```
+Array with the health of the ships of the caravan
+```txt
 1 3 4 6
+```
+```txt
 4 5
 1 2 4 3
 4 6
@@ -148,6 +158,7 @@ Since the testing velocities may vary according to the device codeforces lend us
 2 10
 2 2
 ```
+And to run them you just got to insert the command python main.py and check the output text file
 ### Bibliography:
 [1] https://www.geeksforgeeks.org/multithreading-python-set-1/ <br />
 [2] https://www.geeksforgeeks.org/thread-pool-in-cpp/
