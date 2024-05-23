@@ -15,9 +15,11 @@ Leaving the following amount of fallen ships equal to 2 <br />
 
 
 ## Modal
+![altimg](https://media.geeksforgeeks.org/wp-content/uploads/Thread_Pool.jpg)
+For this code I'm asked for academic purposes to implement multi threading in it which as described in geeks for geeks is a way our code to do multitasking by commanding different threads which are the smallest unit of proccessing that can be performed by an OS, however there is always the problem of overheading (taking more resources and time that the problem requires) so to solve that i'm using the architecture of thread pools that enhance overall performance by lowering the overhead of thread generation and destruction through thread reuse.
 
-With that said and done lets start deconstructing the code
 ## Implementation
+With that said and done lets start deconstructing the code
 ```python
 from concurrent.futures import ThreadPoolExecutor
 
@@ -87,7 +89,7 @@ for _ in range(t):
 ## The time complexity
 The time complexity of this code is one of O(n * k) n being the number of ships in the caravan and k the number of attacks the kraken si going to realize
 
-## The fastest solution 
+## The fastest solution following this approach
 This isn't the fastest solution for the problem however it is the fastest solution that includes multi threading however because according to the AI github copilot the multi-threading and recursion of my code results taxing in memory and time so it proposes the following solution that has a complexity of O(n).
 ```python
 #THIS CODE IS NOT WRITTEN BY ME.
@@ -125,3 +127,9 @@ for _ in range(t):
     result = attack(k, ships)
     print(result)
 ```
+
+However this isn't fast enough for thr problem requirements, so we've gotta change it 
+
+Bibliography:
+[1] https://www.geeksforgeeks.org/multithreading-python-set-1/
+[2] https://www.geeksforgeeks.org/thread-pool-in-cpp/
