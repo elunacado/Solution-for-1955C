@@ -35,7 +35,7 @@ def recursive_attack(numberOfAttacks, ships, attack_count=0, sunken_ships=0):
     else:  # Attack the tail
         ships[-1] -= 1
 
-    with ThreadPoolExecutor(max_workers=1000) as executor:
+    with ThreadPoolExecutor(max_workers=20) as executor:
         future = executor.submit(recursive_attack, numberOfAttacks - 1, ships, attack_count + 1, sunken_ships)
         return future.result()
 
