@@ -184,7 +184,18 @@ Array with the health of the ships of the caravan
 2 10
 2 2
 ```
-And to run them, you just have to insert the command python main.py and check the output text file
+And to run them, you just have to insert the command python main.py and check the output text file, the expectedSetOfOutputs can be found in the expectedSetOfOutputs.txt file and are as follow
+```txt
+Number of sunken ships: 4
+Number of sunken ships: 2
+Number of sunken ships: 3
+Number of sunken ships: 5
+Number of sunken ships: 0
+Number of sunken ships: 2
+Number of sunken ships: 2
+Number of sunken ships: 2
+Number of sunken ships: 2
+```
 ### Bibliography:
 [1] https://www.geeksforgeeks.org/multithreading-python-set-1/ <br />
 [2] https://www.geeksforgeeks.org/thread-pool-in-cpp/
